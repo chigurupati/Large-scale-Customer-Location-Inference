@@ -50,23 +50,24 @@ for eachFile in outputFiles.strip().split('\n'):
   percent20 =  (20*noOfRecords)/100
   percent80 =  (80*noOfRecords)/100
 
-  try:
-    os.stat(trainingFol+"/"+str(regionNo))
-  except:
-    os.mkdir(trainingFol+"/"+str(regionNo))
+  if percent20 > 0 and percent80 > 0:
+    try:
+      os.stat(trainingFol+"/"+str(regionNo))
+    except:
+      os.mkdir(trainingFol+"/"+str(regionNo))
 
-  try:
-    os.stat(testFol+"/"+str(regionNo))
-  except:
-    os.mkdir(testFol+"/"+str(regionNo))
+    try:
+      os.stat(testFol+"/"+str(regionNo))
+    except:
+      os.mkdir(testFol+"/"+str(regionNo))
 
-  percent80FD = open(trainingFol+regionNo+"/"+UserID+".txt",'a')
-  percent20FD = open(testFol+regionNo+"/"+UserID+".txt",'a')
+ 
+    percent80FD = open(trainingFol+regionNo+"/"+regionNo+".txt",'a')
+    percent20FD = open(testFol+regionNo+"/"+regionNo+".txt",'a')
   
-  
-  percent20FD.write('\n'.join(tempList[percent80:]))
-  percent80FD.write('\n'.join(tempList[0:percent80]))
-  percent20FD.close()
-  percent80FD.close()
-  print regionNo,UserID,noOfRecords,percent20,percent80
+    percent20FD.write('\n'.join(tempList[percent80:]))
+    percent80FD.write('\n'.join(tempList[0:percent80]))
+    percent20FD.close()
+    percent80FD.close()
+    print regionNo,UserID,noOfRecords,percent20,percent80
 
