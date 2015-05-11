@@ -1,0 +1,21 @@
+Region ID: 2133   Test Error = : 0.926060028585 Time taken:507.175292015
+Region ID: 2130   Test Error = : 1.0 Time taken:0.606500864029
+Region ID: 2177   Test Error = : 1.0 Time taken:0.610321998596
+Region ID: 2129   Test Error = : 1.0 Time taken:1.29431605339
+Region ID: 2135   Test Error = : 0.586556243467 Time taken:249.524680138
+Region ID: 2128   Test Error = : 0.992301112062 Time taken:118.021629095
+Region ID: 2089   Test Error = : 0.9921875 Time taken:158.679439068
+Region ID: 2218   Test Error = : 1.0 Time taken:0.523232936859
+Region ID: 2486   Test Error = : 1.0 Time taken:3.83053588867
+Region ID: 2088   Test Error = : 0.997307485191 Time taken:156.445913076
+Region ID: 2494   Test Error = : 1.0 Time taken:1.56409692764
+Region ID: 2493   Test Error = : 1.0 Time taken:3.94606018066
+Region ID: 2184   Test Error = : 0.588235294118 Time taken:0.537003993988
+Region ID: 2485   Test Error = : 1.0 Time taken:0.642328977585
+Region ID: 2178   Test Error = : 1.0 Time taken:1.30075502396
+Region ID: 2132   Test Error = : 0.99187404774 Time taken:666.346845865
+Region ID: 2136   Test Error = : 1.0 Time taken:0.850358963013
+Region ID: 2134   Test Error = : 0.937185929648 Time taken:117.381927013
+Region ID: 2176   Test Error = : 0.2 Time taken:5.73226308823
+Region ID: 2131   Test Error = : 0.983851674641 Time taken:476.509374857
+Average error rate: 0.909777965773
