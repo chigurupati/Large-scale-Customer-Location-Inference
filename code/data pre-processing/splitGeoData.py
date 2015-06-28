@@ -16,19 +16,19 @@ cmd = "find "+path+" -name '*.txt'" #Building the unix command to find the files
 p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 (outputFiles, err) = p.communicate()
 
-outputFolder = "dataset_2.0/"
+outputFolder = "dataset_TTDS_v3.0_SF_more100SAM/"
 try:
   shutil.rmtree(outputFolder)
   os.stat(outputFolder)
 except:
   os.mkdir(outputFolder)
 
-trainingFol = "dataset_2.0/trainData/"
-testFol = "dataset_2.0/testData/"
+trainingFol = "dataset_TTDS_v3.0_SF_more100SAM/trainData/"
+testFol = "dataset_TTDS_v3.0_SF_more100SAM/testData/"
 
 os.mkdir(trainingFol)
 os.mkdir(testFol)
-
+print outputFiles
 
 #read each .txt file
 for eachFile in outputFiles.strip().split('\n'):
@@ -46,7 +46,10 @@ for eachFile in outputFiles.strip().split('\n'):
   regionNo = fullPath[regionIndexStart+1:regionIndexEnd]
   UserID = fullPath[regionIndexEnd+1:pointIndex]
   noOfRecords = len(tempList)
- 
+  
+  if noOfRecords < 100:
+    continue 
+
   percent20 =  (20*noOfRecords)/100
   percent80 =  (80*noOfRecords)/100
 
@@ -62,11 +65,12 @@ for eachFile in outputFiles.strip().split('\n'):
       os.mkdir(testFol+"/"+str(regionNo))
 
  
-    percent80FD = open(trainingFol+regionNo+"/"+regionNo+".txt",'a')
-    percent20FD = open(testFol+regionNo+"/"+regionNo+".txt",'a')
+    percent80FD = open(trainingFol+regionNo+"/"+UserID+".txt",'a')
+    percent20FD = open(testFol+regionNo+"/"+UserID+".txt",'a')
   
-    percent20FD.write('\n'.join(tempList[percent80:]))
-    percent80FD.write('\n'.join(tempList[0:percent80]))
+    percent20FD.write('\n'.join(tempList[percent80:])+"\n")
+    percent80FD.write('\n'.join(tempList[0:percent80])+"\n")
     percent20FD.close()
     percent80FD.close()
     print regionNo,UserID,noOfRecords,percent20,percent80
+

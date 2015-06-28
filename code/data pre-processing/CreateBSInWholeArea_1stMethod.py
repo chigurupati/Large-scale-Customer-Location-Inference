@@ -152,8 +152,13 @@ for eachFile in outputFiles.strip().split('\n'):
 
     bsp1 = int(localrelLat / omegalat)
     bsp2 = int(localrelLang / omegalang)
+    
+    newbsp1 = bsp1*divLati
+    newbsp2 = bsp2
+    finalBSVal = newbsp1 +newbsp2
      
-    temp = formatStr % (bsp1, bsp2)
+    #temp = formatStr % (bsp1, bsp2)
+    temp = str(finalBSVal)
 
     mdtf = datetime.datetime.strptime(str(tempList[5])+" "+str(tempList[6]), '%Y-%m-%d %H:%M:%S')
     #entry = str(userID)+","+str(mdtf.year)+","+str(mdtf.month)+","+str(mdtf.day)+","+str(dictDays[mdtf.weekday()])+","+str(mdtf.hour)+","+str(mdtf.minute)+","+str(mdtf.second)+",B"+ temp

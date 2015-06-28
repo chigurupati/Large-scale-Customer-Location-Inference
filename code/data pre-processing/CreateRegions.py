@@ -10,27 +10,28 @@ from math import log
 
 #Variables for minimum Latitude and Langitude
 global minLat
-#minLat = 91.000000
-minLat = 500.000000
+minLat = 91.000000
+#minLat = 500.000000
 global minLong
-#minLong = 181.000000
-minLong = 500.000000
+minLong = 181.000000
+#minLong = 500.000000
 
 #Variables for maximum Latitude and Langitude
 global maxLat
-#maxLat = -91.000000
-maxLat = 0.000000
+maxLat = -91.000000
+#maxLat = 0.000000
 global maxLong
-#maxLong = -181.000000
-maxLong = 0.000000
+maxLong = -181.000000
+#maxLong = 0.000000
 
-numRowRegion = 50
-numColumnRegion = 50
+numRowRegion = 100
+numColumnRegion = 100
 
 #No of vertical and horizontal Base stations in (defining the ground for BS's)
-noBSRow = 200
-noBSColumn = 200
+noBSRow = 20
+noBSColumn = 20
 
+quarterDict = {1:1,2:1,3:1,4:2,5:2,6:2,7:3,8:3,9:3,10:4,11:4,12:4}
 
 maxLengthLong = int(log(noBSColumn, 10) + 0.5)
 maxLengthLat = int(log(noBSRow,10) + 0.5)
@@ -86,29 +87,29 @@ for eachFile in outputFiles.strip().split('\n'):
   fullDS.close()# end of innertempList for loop
 
 #Compute differences in latitude & langitude
-#print "Max : Min - lati"
-#print maxLat,minLat
+print "Max : Min - lati"
+print maxLat,minLat
 
-#print "Max : Min - lang"
-#print maxLong,minLong
+print "Max : Min - lang"
+print maxLong,minLong
 
 latiDiff = maxLat-minLat
 longDiff = maxLong-minLong
 
-#print "lati , lang - diff"
-#print latiDiff,longDiff
+print "lati , lang - diff"
+print latiDiff,longDiff
 
 #dividing the distance to longitude based on required no of rows
 rowSizeRegion = (longDiff/numRowRegion) 
 columnSizeRegion = (latiDiff / numColumnRegion)
 
-#print "Size of Row and Column for regions: with no of regions as",numRowRegion 
-#print rowSizeRegion,columnSizeRegion
+print "Size of Row and Column for regions: with no of regions as",numRowRegion 
+print rowSizeRegion,columnSizeRegion
 
 #print "no of sub region columns and rows:",noBSRow,noBSColumn
 
 prevUserID = -1
-outFolder = 'Output3/'
+outFolder = 'Output_Regions/'
 
 try:
     shutil.rmtree(outFolder)
@@ -161,7 +162,7 @@ for eachFile in outputFiles.strip().split('\n'):
     omegaRegionLong = int((localLong-minLong)/rowSizeRegion)
     
     #print "omegaRegionLat,omegaRegionLong: Region-index",omegaRegionLat,omegaRegionLong   
-
+    #from the index 
     subRegionIndex = omegaRegionLat+(numColumnRegion*omegaRegionLong)
     #print "Region Index",subRegionIndex
 
@@ -203,7 +204,7 @@ for eachFile in outputFiles.strip().split('\n'):
  
     mdtf = datetime.datetime.strptime(str(tempList[5])+" "+str(tempList[6]), '%Y-%m-%d %H:%M:%S')
     #entry = str(userID)+","+str(mdtf.year)+","+str(mdtf.month)+","+str(mdtf.day)+","+str(dictDays[mdtf.weekday()])+","+str(mdtf.hour)+","+str(mdtf.minute)+","+str(mdtf.second)+",B"+ temp
-    entry = str(userID)+","+str(mdtf.year)+","+str(mdtf.month)+","+str(mdtf.day)+","+str(mdtf.weekday())+","+str(mdtf.hour)+","+str(mdtf.minute)+","+str(mdtf.second)+","+ str(InnerSubRegIndex)
+    entry = str(userID)+","+str(mdtf.year)+","+str(mdtf.month)+","+str(mdtf.day)+","+str(mdtf.weekday())+","+str(mdtf.hour)+","+str(mdtf.minute)+","+str(quarterDict[mdtf.month])+","+ str(InnerSubRegIndex)
     writeToFile.write(entry+"\n")
     writeToFile.close()#end of inner for loop
 
