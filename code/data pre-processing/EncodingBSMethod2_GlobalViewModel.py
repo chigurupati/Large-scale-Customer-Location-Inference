@@ -40,7 +40,7 @@ for eachFile in outputFiles.strip().split('\n'):
   regionIndexEnd = eachFile.rfind('/') # test/36/
   regionIndexStart = eachFile[0:regionIndexEnd].rfind('/') # test/
   regionNo = eachFile[regionIndexStart+1:regionIndexEnd]
-  
+  #Just another commad by blue2 branch
   afterfol = fullPath.rfind('.')
   beforefol = fullPath.rfind('/')
   userID = fullPath[beforefol+1:afterfol]
