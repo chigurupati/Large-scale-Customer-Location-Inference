@@ -16,6 +16,7 @@ from operator import itemgetter
 
 #Input path for the dataset 
 path = sys.argv[1]
+#comment
 
 cmd = "find "+path+" -name '*.txt'" #Building the unix command to find the files ending with '.txt'
 p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)

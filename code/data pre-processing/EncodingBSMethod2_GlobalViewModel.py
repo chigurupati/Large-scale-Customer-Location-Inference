@@ -24,6 +24,8 @@ except:
 subFolder = "Individual_User_Dataset/testData/"
 
 os.mkdir(subFolder)
+#another comment
+
 encodingsDic = {}
 counter = 1
 encodedVal = 0
@@ -34,7 +36,7 @@ for eachFile in outputFiles.strip().split('\n'):
   fullData = fullDS.read()
 
   
-
+  print("hello")
   regionIndexEnd = eachFile.rfind('/') # test/36/
   regionIndexStart = eachFile[0:regionIndexEnd].rfind('/') # test/
   regionNo = eachFile[regionIndexStart+1:regionIndexEnd]
